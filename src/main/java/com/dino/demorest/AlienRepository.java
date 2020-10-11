@@ -90,4 +90,20 @@ public class AlienRepository {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateAlien(Alien a) {
+		//jdbc
+		String sql = "update alien set name = ?, points = ? where id = ?";
+		try {
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, a.getName());
+			st.setInt(2, a.getPoints());
+			st.setInt(3, a.getId());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			e.printStackTrace();
+		}
+	}
 }
