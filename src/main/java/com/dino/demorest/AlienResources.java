@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -53,6 +54,16 @@ public class AlienResources {
 			repo.updateAlien(a);
 		}
 		
+		return a;
+	}
+	
+	@DELETE
+	@Path("alien/{id}")
+	public Alien deleteAlien(@PathParam("id") int id) {
+		Alien a = repo.getAlien(id);
+		if (a.getId() != 0) {
+			repo.deleteAlien(id);
+		}
 		return a;
 	}
 }

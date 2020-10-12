@@ -106,4 +106,18 @@ public class AlienRepository {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteAlien(int id) {
+		//jdbc
+		String sql = "delete from alien where id = ?";
+		try {
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			e.printStackTrace();
+		}
+	}
 }
